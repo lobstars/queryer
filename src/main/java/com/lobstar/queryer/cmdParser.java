@@ -210,7 +210,8 @@ public class cmdParser extends TreeParser {
 					String val = d.getText();
 
 	                if (val.startsWith("\"") && val.endsWith("\"")) {
-	                    ret = QueryBuilders.queryString(val).field(c.getText());
+	                	val = val.substring(1, val.length()-1);
+	                    ret = QueryBuilders.queryStringQuery(val).field(c.getText());
 	                } else {
 	                    ret = QueryBuilders.termQuery(c.getText(), d.getText());
 	                }
@@ -275,7 +276,7 @@ public class cmdParser extends TreeParser {
 					String val = d.getText();
 					if (val.startsWith("\"") && val.endsWith("\"")) {
 	                    val = val.substring(1, val.length()-1);
-	                    ret = QueryBuilders.boolQuery().mustNot(QueryBuilders.queryString(val).field(c.getText()));
+	                    ret = QueryBuilders.boolQuery().mustNot(QueryBuilders.queryStringQuery(val).field(c.getText()));
 	                }
 					else {
 						ret = QueryBuilders.boolQuery().mustNot(QueryBuilders.termQuery(c.getText(),val));						
@@ -291,7 +292,7 @@ public class cmdParser extends TreeParser {
 	                if (val.startsWith("\"") && val.endsWith("\"")) {
 	                    val = val.substring(1, val.length()-1);
 	                }
-	                ret = QueryBuilders.queryString(val).field("_all");
+	                ret = QueryBuilders.queryStringQuery(val).field("_all");
 					}
 					break;
 

@@ -39,6 +39,6 @@ public class QueryGenerator {
 	    }
 
 	    public static void main(String[] args) throws Exception {
-	        System.out.println(generateQuery("(\"-222\")"));
+	        System.out.println(generateQuery("admin=d的"));
 	    }
 }
